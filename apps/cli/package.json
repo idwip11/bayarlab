@@ -1,0 +1,32 @@
+{
+  "name": "@bayarlab/cli",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "bayarlab": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "start": "tsx src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@bayarlab/core": "workspace:*",
+    "@bayarlab/engine": "workspace:*",
+    "@bayarlab/provider-demo": "workspace:*",
+    "@bayarlab/provider-doku": "workspace:*",
+    "@bayarlab/provider-midtrans": "workspace:*",
+    "@bayarlab/provider-xendit": "workspace:*",
+    "@bayarlab/scenario": "workspace:*",
+    "@bayarlab/web": "workspace:*",
+    "commander": "14.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "tsx": "4.20.6"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@bayarlab/scenario",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@bayarlab/core": "workspace:*",
+    "@bayarlab/engine": "workspace:*",
+    "@bayarlab/provider-contract": "workspace:*",
+    "@bayarlab/provider-doku": "workspace:*",
+    "@bayarlab/provider-midtrans": "workspace:*",
+    "@bayarlab/provider-xendit": "workspace:*",
+    "yaml": "^2.7.1",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "rimraf": "6.1.2"
+  }
+}

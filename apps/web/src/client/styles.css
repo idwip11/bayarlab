@@ -1,0 +1,254 @@
+:root {
+  color: #14213d;
+  background: #f4f7fb;
+  font:
+    15px / 1.45 Inter,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+main {
+  max-width: 1280px;
+  min-height: 100vh;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0 0 60px #14213d12;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid #dde5ef;
+}
+header strong {
+  font-size: 22px;
+}
+header span {
+  margin-left: 12px;
+  color: #64748b;
+}
+header small {
+  color: #14804a;
+  font-weight: 700;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: calc(100vh - 70px);
+}
+aside {
+  padding: 24px 16px;
+  background: #f8fafc;
+  border-right: 1px solid #dde5ef;
+}
+h1,
+h2 {
+  margin: 0;
+}
+h1 {
+  font-size: 22px;
+}
+h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin: 0 0 10px;
+}
+aside > button,
+aside li button {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px;
+  color: #14213d;
+  background: transparent;
+}
+aside > button.selected {
+  background: #e8f0ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+aside button small {
+  display: block;
+  color: #64748b;
+  font-weight: 400;
+}
+aside p {
+  color: #64748b;
+  font-size: 13px;
+}
+aside ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+aside li button:hover {
+  background: #eef2f7;
+}
+.muted {
+  color: #94a3b8;
+  font-size: 13px;
+}
+.workspace {
+  padding: 28px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1.1fr);
+  align-content: start;
+}
+.panel {
+  border: 1px solid #dde5ef;
+  border-radius: 12px;
+  padding: 22px;
+  background: #fff;
+}
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+.panel-heading span {
+  color: #64748b;
+  font-size: 13px;
+}
+label {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0;
+  font-weight: 600;
+}
+label small {
+  font-weight: 400;
+  color: #64748b;
+}
+input,
+select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+}
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.check {
+  display: flex;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  font-weight: 500;
+}
+.check input {
+  width: auto;
+}
+.warning {
+  color: #9a5b00;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+.primary,
+.secondary {
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 7px;
+  font-weight: 700;
+}
+.primary {
+  background: #1d4ed8;
+  color: #fff;
+}
+.primary:disabled,
+.secondary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.secondary {
+  background: #e8edf5;
+  color: #1e293b;
+}
+.error {
+  color: #b42318;
+  background: #fef3f2;
+  padding: 10px;
+  border-radius: 7px;
+}
+.inspector {
+  min-width: 0;
+}
+.inspector nav {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #dde5ef;
+}
+.inspector nav button {
+  border: 0;
+  background: transparent;
+  padding: 8px 10px;
+  color: #64748b;
+}
+.inspector nav button.active {
+  color: #1d4ed8;
+  border-bottom: 2px solid #1d4ed8;
+}
+pre {
+  min-height: 270px;
+  margin: 16px 0;
+  padding: 14px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #0f172a;
+  color: #dbeafe;
+  border-radius: 8px;
+  font:
+    12px / 1.5 ui-monospace,
+    SFMono-Regular,
+    monospace;
+}
+.replay {
+  float: right;
+}
+@media (max-width: 820px) {
+  .layout,
+  .workspace {
+    display: block;
+  }
+  aside {
+    border-right: 0;
+    border-bottom: 1px solid #dde5ef;
+  }
+  .workspace {
+    padding: 16px;
+  }
+  .panel {
+    margin-bottom: 16px;
+  }
+  header span {
+    display: none;
+  }
+}

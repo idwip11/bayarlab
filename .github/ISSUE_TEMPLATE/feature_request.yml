@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest a user-focused improvement or provider profile.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For provider support, include the exact API family/channel and official reference links. A payment state alone does not establish that a matching webhook exists.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What are you trying to test or accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the workflow or behavior that would help.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: References and scope (for provider requests)
+      description: Link official documentation and identify product, country, channel, and event if known.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety and scope
+      options:
+        - label: I have not included real credentials, customer data, or production payloads.
+          required: true

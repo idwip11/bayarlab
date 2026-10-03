@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-labelledby="title description">
+  <title id="title">BayarLab architecture</title>
+  <desc id="description">The CLI, dashboard, and YAML runner feed provider adapters, which prepare signed requests, validate the target, send to a developer receiver, and display a redacted result. The dashboard uses a loopback API and in-memory replay history.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#596579"/>
+    </marker>
+    <style>
+      .title { font: 700 17px system-ui, sans-serif; fill: #13233d; }
+      .copy { font: 13px system-ui, sans-serif; fill: #41516a; }
+      .edge { stroke: #596579; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .node { stroke-width: 1.5; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1120" height="430" rx="22" fill="#f7f9fc"/>
+  <text x="38" y="45" class="title" font-size="23">BayarLab — local-first webhook flow</text>
+
+  <rect x="26" y="74" width="683" height="308" rx="18" fill="#edf4ff" stroke="#b8cae8" stroke-dasharray="6 5"/>
+  <text x="48" y="104" class="copy">Developer machine</text>
+  <rect class="node" x="48" y="130" width="176" height="75" fill="#fff" stroke="#9bb4db"/>
+  <text x="68" y="160" class="title">CLI / YAML</text>
+  <text x="68" y="184" class="copy">Dashboard on loopback</text>
+
+  <rect class="node" x="278" y="130" width="183" height="75" fill="#fff" stroke="#9bb4db"/>
+  <text x="300" y="160" class="title">Provider adapters</text>
+  <text x="300" y="184" class="copy">Synthetic event profiles</text>
+
+  <rect class="node" x="510" y="130" width="169" height="75" fill="#e5f6f0" stroke="#77bda2"/>
+  <text x="529" y="160" class="title">Sign exact bytes</text>
+  <text x="529" y="184" class="copy">Then validate target</text>
+
+  <path class="edge" d="M224 168H273"/>
+  <path class="edge" d="M461 168H505"/>
+  <path class="edge" d="M679 168H746"/>
+
+  <rect class="node" x="755" y="130" width="174" height="75" fill="#fff3df" stroke="#e0b66f"/>
+  <text x="778" y="160" class="title">HTTP delivery</text>
+  <text x="778" y="184" class="copy">One request; no auto-retry</text>
+  <path class="edge" d="M929 168H980"/>
+
+  <rect class="node" x="988" y="130" width="107" height="75" fill="#fff" stroke="#9aa5b5"/>
+  <text x="1002" y="160" class="title">Your</text>
+  <text x="1002" y="184" class="copy">receiver</text>
+
+  <path d="M1040 211V267H856" stroke="#596579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect class="node" x="713" y="248" width="240" height="74" fill="#fff" stroke="#9bb4db"/>
+  <text x="738" y="279" class="title">HTTP response</text>
+  <text x="738" y="301" class="copy">Captured with latency and status</text>
+  <path class="edge" d="M713 285H645"/>
+
+  <rect class="node" x="402" y="248" width="237" height="74" fill="#f3eefe" stroke="#b7a0dd"/>
+  <text x="426" y="279" class="title">Redacted display</text>
+  <text x="426" y="301" class="copy">History stores bytes in memory</text>
+  <path d="M402 285H136V211" stroke="#596579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="48" y="347" class="copy">Local targets by default · remote targets require acknowledgement · credentials stay synthetic</text>
+</svg>

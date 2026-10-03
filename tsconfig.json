@@ -1,0 +1,15 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/provider-contract" },
+    { "path": "./packages/engine" },
+    { "path": "./packages/providers/midtrans" },
+    { "path": "./packages/providers/doku" },
+    { "path": "./packages/providers/xendit" },
+    { "path": "./packages/providers/demo" },
+    { "path": "./packages/scenario" },
+    { "path": "./apps/cli" },
+    { "path": "./apps/web" }
+  ]
+}

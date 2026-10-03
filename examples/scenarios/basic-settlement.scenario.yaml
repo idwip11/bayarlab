@@ -1,0 +1,12 @@
+version: 1
+provider: midtrans
+target: http://localhost:3000/webhooks/midtrans
+
+variables:
+  order_id: BL-BASIC-001
+  amount: 150000
+
+steps:
+  - event: settlement
+    expect:
+      status: 200

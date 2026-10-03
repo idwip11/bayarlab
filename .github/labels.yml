@@ -1,0 +1,27 @@
+bug:
+  color: "d73a4a"
+  description: "A reproducible defect"
+enhancement:
+  color: "a2eeef"
+  description: "An improvement or new capability"
+good first issue:
+  color: "7057ff"
+  description: "A scoped task suitable for a first contribution"
+help wanted:
+  color: "008672"
+  description: "Maintainers welcome community help"
+"area: docs":
+  color: "0075ca"
+  description: "Documentation and examples"
+"area: provider":
+  color: "1d76db"
+  description: "Provider adapter or fidelity work"
+"area: tests":
+  color: "bfd4f2"
+  description: "Tests and quality checks"
+"area: cli":
+  color: "c5def5"
+  description: "Command-line interface"
+"area: dashboard":
+  color: "f9d0c4"
+  description: "Local dashboard"

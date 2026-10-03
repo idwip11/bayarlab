@@ -1,0 +1,39 @@
+{
+  "name": "@bayarlab/web",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.client.json && vite build",
+    "clean": "rimraf dist",
+    "dev": "vite",
+    "start": "node ../cli/dist/index.js ui",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:client": "tsc -p tsconfig.client.json"
+  },
+  "dependencies": {
+    "@bayarlab/core": "workspace:*",
+    "@bayarlab/engine": "workspace:*",
+    "@bayarlab/provider-doku": "workspace:*",
+    "@bayarlab/provider-midtrans": "workspace:*",
+    "@bayarlab/provider-xendit": "workspace:*",
+    "fastify": "5.12.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "rimraf": "6.1.2",
+    "vite": "7.3.6"
+  }
+}

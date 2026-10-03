@@ -1,0 +1,54 @@
+{
+  "name": "bayarlab",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "bayarlab": "dist/index.js"
+  },
+  "files": [
+    "dist/index.js",
+    "dist/client",
+    "dist/licenses",
+    "README.md",
+    "LICENSE"
+  ],
+  "description": "Local payment webhook simulator for Indonesian developers.",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22.13.0",
+    "pnpm": ">=11.0.0"
+  },
+  "scripts": {
+    "build": "pnpm build:workspace && node scripts/build-release.mjs",
+    "build:workspace": "tsc -b && pnpm --filter @bayarlab/web build",
+    "prepack": "pnpm build",
+    "clean": "pnpm -r --if-present clean",
+    "changeset": "changeset",
+    "demo:receiver": "node examples/demo-receiver.mjs",
+    "midtrans:receiver": "node examples/midtrans-receiver.mjs",
+    "xendit:receiver": "node examples/xendit-receiver.mjs",
+    "doku:receiver": "node examples/doku-receiver.mjs",
+    "ui": "pnpm build && node apps/cli/dist/index.js ui",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "smoke:packages": "node scripts/package-smoke.mjs",
+    "smoke:release": "node scripts/release-smoke.mjs",
+    "test": "pnpm build && pnpm -r --if-present test",
+    "typecheck": "tsc -b --pretty false && pnpm --filter @bayarlab/web typecheck:client",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.4",
+    "@changesets/cli": "^3.0.2",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "esbuild": "0.28.2"
+  },
+  "dependencies": {
+    "commander": "14.0.2",
+    "fastify": "5.12.5",
+    "yaml": "2.9.1",
+    "zod": "3.25.76"
+  }
+}

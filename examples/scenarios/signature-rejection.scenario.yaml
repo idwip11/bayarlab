@@ -1,0 +1,27 @@
+version: 1
+provider: midtrans
+target: http://localhost:3000/webhooks/midtrans
+
+variables:
+  order_id: BL-SIG-001
+  amount: 150000
+
+steps:
+  # Valid signature — should be accepted
+  - event: settlement
+    expect:
+      status: 200
+
+  # Invalid signature — should be rejected by the receiver
+  - event: settlement
+    options:
+      invalid_signature: true
+    expect:
+      status: 401
+
+  # Missing signature — should be rejected by the receiver
+  - event: settlement
+    options:
+      missing_signature: true
+    expect:
+      status: 400

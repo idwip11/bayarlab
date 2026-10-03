@@ -1,0 +1,20 @@
+version: 1
+provider: midtrans
+target: http://localhost:3000/webhooks/midtrans
+
+variables:
+  order_id: BL-IDEM-001
+  amount: 150000
+
+steps:
+  # First delivery
+  - event: settlement
+    expect:
+      status: 200
+
+  # Duplicate delivery — reuses the same event identity
+  - event: settlement
+    options:
+      duplicate: true
+    expect:
+      status: 200

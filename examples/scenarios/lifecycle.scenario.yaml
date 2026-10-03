@@ -1,0 +1,33 @@
+version: 1
+provider: midtrans
+target: http://localhost:3000/webhooks/midtrans
+
+variables:
+  transaction_id: 11111111-1111-4111-8111-111111111111
+  order_id: BL-LIFE-001
+  amount: 250000
+
+deterministic:
+  seed: "lifecycle-ci-v1"
+  timestamp: "2026-01-15T10:00:00Z"
+
+steps:
+  # Step 1: Payment is pending
+  - event: pending
+    expect:
+      status: 200
+
+  # Simulate real-world delay
+  - wait: 1000
+
+  # Step 2: Payment settles
+  - event: settlement
+    expect:
+      status: 200
+
+  # Step 3: Duplicate settlement (idempotency check)
+  - event: settlement
+    options:
+      duplicate: true
+    expect:
+      status: 200

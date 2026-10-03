@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+  - packages/providers/*
+
+overrides:
+  'brace-expansion@>=5.0.0 <5.0.12': 5.0.12
+allowBuilds:
+  esbuild: true

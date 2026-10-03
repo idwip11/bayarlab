@@ -1,0 +1,25 @@
+version: 1
+provider: xendit
+target: http://127.0.0.1:3000/webhook
+variables:
+  order_id: BL-XENDIT-CI-001
+  amount: 150000
+  product: payments-api-v3-dana
+deterministic:
+  seed: xendit-dana-ci-v1
+  timestamp: "2026-09-23T00:00:00Z"
+steps:
+  - event: capture
+    expect:
+      status: 200
+  - event: capture
+    options:
+      duplicate: true
+    expect:
+      status: 200
+  - event: capture
+    options:
+      duplicate: true
+      invalid_signature: true
+    expect:
+      status: 401

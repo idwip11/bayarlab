@@ -1,0 +1,31 @@
+version: 1
+provider: doku
+target: http://127.0.0.1:3000/webhook/doku
+variables:
+  order_id: BL-DOKU-CI-001
+  amount: 150000
+  product: direct-api-non-snap-mandiri-va
+deterministic:
+  seed: doku-mandiri-va-ci-v1
+  timestamp: "2026-09-28T00:00:00Z"
+steps:
+  - event: success
+    expect:
+      status: 200
+  - event: success
+    options:
+      duplicate: true
+    expect:
+      status: 200
+  - event: success
+    options:
+      duplicate: true
+      invalid_signature: true
+    expect:
+      status: 401
+  - event: success
+    options:
+      duplicate: true
+      missing_signature: true
+    expect:
+      status: 401

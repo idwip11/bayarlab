@@ -1,0 +1,44 @@
+# Example integration check: run a local receiver, then validate it with a scenario file.
+name: BayarLab Scenario Example
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  webhook-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22, 24]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Start the local DOKU example receiver
+        run: pnpm doku:receiver > receiver.log 2>&1 &
+      - name: Wait for the receiver
+        run: |
+          for attempt in $(seq 1 30); do
+            status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+              --request POST http://127.0.0.1:3000/webhook/doku || true)
+            if [ "$status" = "401" ]; then exit 0; fi
+            sleep 1
+          done
+          cat receiver.log
+          exit 1
+      - name: Run the DOKU scenario against the local receiver
+        run: node apps/cli/dist/index.js test examples/doku-mandiri-va.scenario.yaml

@@ -1,0 +1,28 @@
+{
+  "name": "@bayarlab/provider-doku",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@bayarlab/core": "workspace:*",
+    "@bayarlab/provider-contract": "workspace:*"
+  },
+  "devDependencies": {
+    "@bayarlab/engine": "workspace:*",
+    "@types/node": "24.10.0",
+    "rimraf": "6.1.2"
+  }
+}
