@@ -1,12 +1,12 @@
 # Phase 11 — Release Candidate Audit
 
-Audit and remediation date: **2026-10-03 (Asia/Makassar)**. **RC-001–RC-013 are resolved and locally verified.** Public release approval remains **pending** until an identifiable candidate commit passes the cross-platform CI gates below. No package has been published.
+Audit and remediation date: **2026-10-03 (Asia/Makassar)**. **RC-001–RC-013 are resolved and locally verified.** Candidate commit `4bd9735` passed all configured cross-platform CI gates. Package publication remains pending maintainer release approval and confirmation that the `bayarlab` npm name is publishable. No package has been published.
 
-The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. The maintainer has pushed the source to the public repository `https://github.com/idwip11/bayarlab`. The first cross-platform matrix run stopped at lint because one Express example line needed wrapping; that was fixed and local lint passed. A second run then exposed Windows CRLF checkout behavior (Biome reported 97 formatting diagnostics); `.gitattributes` now enforces LF for text files. The next matrix run is pending.
+The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. The maintainer has pushed the source to the public repository `https://github.com/idwip11/bayarlab`. The first matrix run found an Express example formatting issue; the second exposed Windows CRLF checkout behavior. Both are fixed. Candidate commit `4bd9735` passed the full 3×3 matrix: all nine Ubuntu/macOS/Windows × Node 22.13.0/22/24 lanes completed lint, typecheck, build, tests, package smoke, and release smoke successfully.
 
 ## Remediation ledger
 
-The maintainer selected **MIT**, copyright **BayarLab contributors**. The public executable package follows the blueprint's name, **`bayarlab`**, with candidate version **0.1.0**. Internal workspace packages remain private; no registry publication or remote repository changes were performed.
+The maintainer selected **MIT**, copyright **BayarLab contributors**. The public executable package follows the blueprint's name, **`bayarlab`**, with candidate version **0.1.0**. Internal workspace packages remain private. The Phase 12 source has since been pushed to the public GitHub repository; no registry publication has been performed.
 
 | ID | Current status | Fix and regression evidence |
 | --- | --- | --- |
@@ -36,10 +36,11 @@ The maintainer selected **MIT**, copyright **BayarLab contributors**. The public
 | License in repository/installed artifact | Passed | MIT, copyright 2026 BayarLab contributors |
 | Full and production dependency audits | **Zero reported advisories** | Includes development graph and independently resolved installed runtime graph; registry snapshot, not a permanent guarantee |
 | Multi-file machine-readable reports | Passed | ElementTree XML parse and JSON parse, aggregate counts; report/unit/CLI regressions |
-| Cross-platform CI | **Rerun pending** | The [first run](https://github.com/idwip11/bayarlab/actions/runs/37127717208) failed at an Express-example line wrap; the [second run](https://github.com/idwip11/bayarlab/actions/runs/37128194734) passed Linux/macOS but exposed CRLF formatting failures on Windows. `.gitattributes` now enforces LF. |
-| Scenario example workflow | **Passed** | DOKU scenario workflow passed on Node 22/24; [run details](https://github.com/idwip11/bayarlab/actions/runs/37127717207). |
-| Identifiable candidate commit | **Pushed; corrected CI pending** | Source is on `main`; verify the matrix against the latest LF-normalizing push before release approval. |
+| Cross-platform CI | **Passed, 9/9 lanes** | Lint, typecheck, build, tests, package smoke, and release smoke passed on Ubuntu/macOS/Windows × Node 22.13.0/22/24; [run details](https://github.com/idwip11/bayarlab/actions/runs/37128441689). |
+| Scenario example workflow | **Passed** | DOKU scenario workflow passed on Node 22/24; [run details](https://github.com/idwip11/bayarlab/actions/runs/37128441647). |
+| Identifiable candidate commit | **Verified** | Candidate source commit `4bd9735d1aa27a5b97e10f4ad8ef44d0a2b012f4` is pushed to `main` and the linked matrix ran against it. |
 | Public repository identity | **Verified public and pushed** | Maintainer-designated repository: `https://github.com/idwip11/bayarlab`. |
+| Demo GIF/video | **Pending maintainer capture** | The recording guide requires a real local capture and frame-by-frame review; no synthetic mockup is used. |
 | npm package name ownership | **Unconfirmed** | `npm view bayarlab` returned E404; private/inaccessible package names also produce that response. This is not proof that the name can be published by this maintainer. |
 
 One simultaneous host/minimum-version test run hit the old 5-second CLI subprocess harness timeout under CPU load. CLI test timeout is now bounded at 30 seconds to include process startup on CI; HTTP timeouts and response-duration assertions are unchanged. Final reruns passed. Smoke tests remove only their uniquely created temporary consumers. No real payment traffic or credentials were used.

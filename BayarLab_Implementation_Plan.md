@@ -2121,14 +2121,14 @@ Implement the approved fixes.
 > and Indonesian X/Threads and developer-community announcement drafts are
 > prepared. The maintainer designated
 > [github.com/idwip11/bayarlab](https://github.com/idwip11/bayarlab); the local
-> `origin` points there and the repository is public. The initial source push
-> succeeded. No package or announcement has been published. The 20–40 second
-> demo still needs an actual local capture and frame review. The DOKU scenario
-> workflow passed on Node 22/24. The first 3×3 CI attempt found an overlong
-> Express log line, now fixed. The next matrix passed lint/build/tests on Linux
-> and macOS but exposed Windows CRLF checkout behavior in Biome. `.gitattributes`
-> now enforces LF for text files; the matrix rerun is pending.
-> npm package ownership is unconfirmed. See [launch notes](docs/launch-announcement-id.md),
+> `origin` points there and the repository is public. Candidate source commit
+> [`4bd9735`](https://github.com/idwip11/bayarlab/commit/4bd9735d1aa27a5b97e10f4ad8ef44d0a2b012f4)
+> passed all nine Ubuntu/macOS/Windows × Node 22.13.0/22/24 lanes, including lint,
+> typecheck, build, tests, and package/release smoke ([CI run](https://github.com/idwip11/bayarlab/actions/runs/37128441689)).
+> The DOKU scenario workflow also passed on Node 22/24. No package or
+> announcement has been published. The 20–40 second demo still needs an actual
+> local capture and frame review, and npm package ownership is unconfirmed. See
+> [launch notes](docs/launch-announcement-id.md),
 > [release draft](docs/releases/v0.1.0.md), and [Phase 11 audit](docs/release-candidate-audit.md).
 
 **Estimated:** 1 day + ongoing
