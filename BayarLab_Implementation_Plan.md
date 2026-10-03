@@ -2124,9 +2124,10 @@ Implement the approved fixes.
 > `origin` points there and the repository is public. The initial source push
 > succeeded. No package or announcement has been published. The 20–40 second
 > demo still needs an actual local capture and frame review. The DOKU scenario
-> workflow passed on Node 22/24. The first 3×3 cross-platform CI attempt stopped
-> at lint on one overlong line in the Express example; it is corrected and
-> `pnpm lint` passes locally. The corrective push and matrix rerun are pending.
+> workflow passed on Node 22/24. The first 3×3 CI attempt found an overlong
+> Express log line, now fixed. The next matrix passed lint/build/tests on Linux
+> and macOS but exposed Windows CRLF checkout behavior in Biome. `.gitattributes`
+> now enforces LF for text files; the matrix rerun is pending.
 > npm package ownership is unconfirmed. See [launch notes](docs/launch-announcement-id.md),
 > [release draft](docs/releases/v0.1.0.md), and [Phase 11 audit](docs/release-candidate-audit.md).
 

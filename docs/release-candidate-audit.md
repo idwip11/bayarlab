@@ -2,7 +2,7 @@
 
 Audit and remediation date: **2026-10-03 (Asia/Makassar)**. **RC-001–RC-013 are resolved and locally verified.** Public release approval remains **pending** until an identifiable candidate commit passes the cross-platform CI gates below. No package has been published.
 
-The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. At initial audit time, the checkout had no `HEAD`; the maintainer has since pushed the source to the public repository `https://github.com/idwip11/bayarlab`. The first cross-platform matrix run stopped at lint because one line in the new Express example needed wrapping. That correction is included with this status update; local `pnpm lint` passes. The matrix rerun is pending on the corrective push.
+The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. The maintainer has pushed the source to the public repository `https://github.com/idwip11/bayarlab`. The first cross-platform matrix run stopped at lint because one Express example line needed wrapping; that was fixed and local lint passed. A second run then exposed Windows CRLF checkout behavior (Biome reported 97 formatting diagnostics); `.gitattributes` now enforces LF for text files. The next matrix run is pending.
 
 ## Remediation ledger
 
@@ -36,9 +36,9 @@ The maintainer selected **MIT**, copyright **BayarLab contributors**. The public
 | License in repository/installed artifact | Passed | MIT, copyright 2026 BayarLab contributors |
 | Full and production dependency audits | **Zero reported advisories** | Includes development graph and independently resolved installed runtime graph; registry snapshot, not a permanent guarantee |
 | Multi-file machine-readable reports | Passed | ElementTree XML parse and JSON parse, aggregate counts; report/unit/CLI regressions |
-| Cross-platform CI | **Rerun pending** | The first Ubuntu/macOS/Windows × Node 22.13.0/22/24 run failed at lint only on an Express-example formatting line; the correction is included here. See [failed matrix run](https://github.com/idwip11/bayarlab/actions/runs/37127717208). |
+| Cross-platform CI | **Rerun pending** | The [first run](https://github.com/idwip11/bayarlab/actions/runs/37127717208) failed at an Express-example line wrap; the [second run](https://github.com/idwip11/bayarlab/actions/runs/37128194734) passed Linux/macOS but exposed CRLF formatting failures on Windows. `.gitattributes` now enforces LF. |
 | Scenario example workflow | **Passed** | DOKU scenario workflow passed on Node 22/24; [run details](https://github.com/idwip11/bayarlab/actions/runs/37127717207). |
-| Identifiable candidate commit | **Pushed; corrected CI pending** | Source is on `main`; verify the matrix against the corrective push before release approval. |
+| Identifiable candidate commit | **Pushed; corrected CI pending** | Source is on `main`; verify the matrix against the latest LF-normalizing push before release approval. |
 | Public repository identity | **Verified public and pushed** | Maintainer-designated repository: `https://github.com/idwip11/bayarlab`. |
 | npm package name ownership | **Unconfirmed** | `npm view bayarlab` returned E404; private/inaccessible package names also produce that response. This is not proof that the name can be published by this maintainer. |
 
