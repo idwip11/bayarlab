@@ -2122,8 +2122,9 @@ Implement the approved fixes.
 > prepared. The maintainer designated
 > [github.com/idwip11/bayarlab](https://github.com/idwip11/bayarlab); the local
 > `origin` points there. No package or announcement has been published. The
-> 20–40 second demo still needs an actual local capture and frame review. Initial
-> source push and cross-platform CI results remain pending; npm package ownership
+> 20–40 second demo still needs an actual local capture and frame review.
+> Candidate source is committed locally; its push and CI results remain pending.
+> npm package ownership
 > is unconfirmed. See [launch notes](docs/launch-announcement-id.md),
 > [release draft](docs/releases/v0.1.0.md), and [Phase 11 audit](docs/release-candidate-audit.md).
 

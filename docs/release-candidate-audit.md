@@ -2,7 +2,7 @@
 
 Audit and remediation date: **2026-10-03 (Asia/Makassar)**. **RC-001–RC-013 are resolved and locally verified.** Public release approval remains **pending** until an identifiable candidate commit passes the cross-platform CI gates below. No package has been published.
 
-The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. At initial audit time, the checkout had no `HEAD`; the maintainer has since designated `https://github.com/idwip11/bayarlab` and configured it as `origin`. The first source commit, push, and cross-platform CI run are still pending; use the pushed commit and its workflow results as the release candidate evidence.
+The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. At initial audit time, the checkout had no `HEAD`; the maintainer has since designated `https://github.com/idwip11/bayarlab` and configured it as `origin`. Candidate source is committed locally; its push and cross-platform CI run are pending. Use the pushed `main` commit and its workflow results as the release candidate evidence.
 
 ## Remediation ledger
 
@@ -37,7 +37,7 @@ The maintainer selected **MIT**, copyright **BayarLab contributors**. The public
 | Full and production dependency audits | **Zero reported advisories** | Includes development graph and independently resolved installed runtime graph; registry snapshot, not a permanent guarantee |
 | Multi-file machine-readable reports | Passed | ElementTree XML parse and JSON parse, aggregate counts; report/unit/CLI regressions |
 | Cross-platform CI | Configured, **not yet observed** | Ubuntu/macOS/Windows × Node 22.13.0/22/24; pnpm pinned to 11.19.0; installed release smoke added |
-| Identifiable candidate commit | **Pending** | No HEAD existed at initial audit time; identify the candidate by the pushed commit SHA and verify CI against that exact commit. |
+| Identifiable candidate commit | **Created locally; push/CI pending** | Candidate source is committed locally; verify CI against the pushed `main` commit. |
 | Public repository identity | **Designated; push pending** | Maintainer designated `https://github.com/idwip11/bayarlab`; its visibility/access and initial source push have not been verified from this environment. |
 | npm package name ownership | **Unconfirmed** | `npm view bayarlab` returned E404; private/inaccessible package names also produce that response. This is not proof that the name can be published by this maintainer. |
 
