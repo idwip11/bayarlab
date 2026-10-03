@@ -27,5 +27,7 @@ app.post(
 );
 
 app.listen(port, "127.0.0.1", () => {
-  process.stdout.write(`Synthetic Midtrans receiver listening on http://127.0.0.1:${port}/webhook/midtrans\n`);
+  process.stdout.write(
+    `Synthetic Midtrans receiver listening on http://127.0.0.1:${port}/webhook/midtrans\n`,
+  );
 });

@@ -2121,11 +2121,13 @@ Implement the approved fixes.
 > and Indonesian X/Threads and developer-community announcement drafts are
 > prepared. The maintainer designated
 > [github.com/idwip11/bayarlab](https://github.com/idwip11/bayarlab); the local
-> `origin` points there. No package or announcement has been published. The
-> 20–40 second demo still needs an actual local capture and frame review.
-> Candidate source is committed locally; its push and CI results remain pending.
-> npm package ownership
-> is unconfirmed. See [launch notes](docs/launch-announcement-id.md),
+> `origin` points there and the repository is public. The initial source push
+> succeeded. No package or announcement has been published. The 20–40 second
+> demo still needs an actual local capture and frame review. The DOKU scenario
+> workflow passed on Node 22/24. The first 3×3 cross-platform CI attempt stopped
+> at lint on one overlong line in the Express example; it is corrected and
+> `pnpm lint` passes locally. The corrective push and matrix rerun are pending.
+> npm package ownership is unconfirmed. See [launch notes](docs/launch-announcement-id.md),
 > [release draft](docs/releases/v0.1.0.md), and [Phase 11 audit](docs/release-candidate-audit.md).
 
 **Estimated:** 1 day + ongoing

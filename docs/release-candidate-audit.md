@@ -2,7 +2,7 @@
 
 Audit and remediation date: **2026-10-03 (Asia/Makassar)**. **RC-001–RC-013 are resolved and locally verified.** Public release approval remains **pending** until an identifiable candidate commit passes the cross-platform CI gates below. No package has been published.
 
-The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. At initial audit time, the checkout had no `HEAD`; the maintainer has since designated `https://github.com/idwip11/bayarlab` and configured it as `origin`. Candidate source is committed locally; its push and cross-platform CI run are pending. Use the pushed `main` commit and its workflow results as the release candidate evidence.
+The initial review used the security engineer, backend engineer, QA, contributor, and first-time user perspectives specified in the implementation plan. Its original decision was **NO-GO**. The original evidence/findings are retained below as the baseline; the remediation ledger records the subsequent fixes. At initial audit time, the checkout had no `HEAD`; the maintainer has since pushed the source to the public repository `https://github.com/idwip11/bayarlab`. The first cross-platform matrix run stopped at lint because one line in the new Express example needed wrapping. That correction is included with this status update; local `pnpm lint` passes. The matrix rerun is pending on the corrective push.
 
 ## Remediation ledger
 
@@ -36,9 +36,10 @@ The maintainer selected **MIT**, copyright **BayarLab contributors**. The public
 | License in repository/installed artifact | Passed | MIT, copyright 2026 BayarLab contributors |
 | Full and production dependency audits | **Zero reported advisories** | Includes development graph and independently resolved installed runtime graph; registry snapshot, not a permanent guarantee |
 | Multi-file machine-readable reports | Passed | ElementTree XML parse and JSON parse, aggregate counts; report/unit/CLI regressions |
-| Cross-platform CI | Configured, **not yet observed** | Ubuntu/macOS/Windows × Node 22.13.0/22/24; pnpm pinned to 11.19.0; installed release smoke added |
-| Identifiable candidate commit | **Created locally; push/CI pending** | Candidate source is committed locally; verify CI against the pushed `main` commit. |
-| Public repository identity | **Designated; push pending** | Maintainer designated `https://github.com/idwip11/bayarlab`; its visibility/access and initial source push have not been verified from this environment. |
+| Cross-platform CI | **Rerun pending** | The first Ubuntu/macOS/Windows × Node 22.13.0/22/24 run failed at lint only on an Express-example formatting line; the correction is included here. See [failed matrix run](https://github.com/idwip11/bayarlab/actions/runs/37127717208). |
+| Scenario example workflow | **Passed** | DOKU scenario workflow passed on Node 22/24; [run details](https://github.com/idwip11/bayarlab/actions/runs/37127717207). |
+| Identifiable candidate commit | **Pushed; corrected CI pending** | Source is on `main`; verify the matrix against the corrective push before release approval. |
+| Public repository identity | **Verified public and pushed** | Maintainer-designated repository: `https://github.com/idwip11/bayarlab`. |
 | npm package name ownership | **Unconfirmed** | `npm view bayarlab` returned E404; private/inaccessible package names also produce that response. This is not proof that the name can be published by this maintainer. |
 
 One simultaneous host/minimum-version test run hit the old 5-second CLI subprocess harness timeout under CPU load. CLI test timeout is now bounded at 30 seconds to include process startup on CI; HTTP timeouts and response-duration assertions are unchanged. Final reruns passed. Smoke tests remove only their uniquely created temporary consumers. No real payment traffic or credentials were used.

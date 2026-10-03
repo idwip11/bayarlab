@@ -49,6 +49,6 @@ Ask which current workflow this replaces, what they would still need the provide
 - BNI VA plus two card outcomes covers enough early debugging needs.
 - CLI plus a small dashboard is more useful than either alone.
 - Teams will maintain versioned scenarios for CI once V0.2 exists.
-- The package name must be checked for availability and ownership before publishing. On 2026-10-03, `npm view bayarlab name version` returned E404. This confirms there is no publicly readable package at that registry path in this query; npm's response also covers packages the caller cannot access, so it does not establish ownership or guarantee that the name can be published. The maintainer has designated `https://github.com/idwip11/bayarlab` and configured it as the local `origin`; GitHub visibility and push/CI status still need confirmation.
+- The package name must be checked for availability and ownership before publishing. On 2026-10-03, `npm view bayarlab name version` returned E404. This confirms there is no publicly readable package at that registry path in this query; npm's response also covers packages the caller cannot access, so it does not establish ownership or guarantee that the name can be published. The maintainer designated `https://github.com/idwip11/bayarlab`; it is confirmed public and the source has been pushed. Its cross-platform CI rerun is pending.
 
 Phase 0 establishes a concrete product direction and source-backed technical scope. Demand, installation speed, usability, and sandbox fidelity remain measurable follow-up work.
